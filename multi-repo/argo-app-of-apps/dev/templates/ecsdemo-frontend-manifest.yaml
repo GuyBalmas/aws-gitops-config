@@ -9,7 +9,8 @@ spec:
   destinations:
   - namespace: apps
     server: https://kubernetes.default.svc
-  sourceRepos: '- {{ .Values.spec.apps.(@= data.values.workload.metadata.name @).repoURL }}'
+  sourceRepos:
+  - '{{ .Values.spec.apps.ecsdemo-frontend.repoURL }}'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
