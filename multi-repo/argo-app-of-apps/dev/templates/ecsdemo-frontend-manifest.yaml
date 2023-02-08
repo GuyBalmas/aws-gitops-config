@@ -17,7 +17,8 @@ kind: Application
 metadata:
   name: ecsdemo-frontend
   namespace: apps
-  labels: '{{- toYaml .Values.labels | nindent 4 }}'
+  labels: |
+    {{- toYaml .Values.labels | nindent 4 }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -26,11 +27,12 @@ spec:
     namespace: apps
     server: '{{ .Values.spec.destination.server }}'
   source:
-    repoURL: '{{ .Values.spec.apps.ecsdemoFrontend.repoURL }}'
-    targetRevision: '{{ .Values.spec.apps.ecsdemoFrontend.targetRevision }}'
-    path: '{{ .Values.spec.apps.ecsdemoFrontend.path }}'
+    repoURL: '{{ .Values.spec.apps.ecsdemo-frontend.repoURL }}'
+    targetRevision: '{{ .Values.spec.apps.ecsdemo-frontend.targetRevision }}'
+    path: '{{ .Values.spec.apps.ecsdemo-frontend.path }}'
     helm:
-      values: '{{ toYaml .Values.spec.apps.ecsdemo-frontend | nindent 8 }}'
+      values: |
+        {{ toYaml .Values.spec.apps.ecsdemo-frontend.path | nindent 8 }}   #! CHANGED
   syncPolicy:
     automated:
       prune: true
