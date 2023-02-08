@@ -31,7 +31,7 @@ spec:
     targetRevision: '{{ .Values.spec.apps.ecsdemo_frontend.targetRevision }}'
     path: '{{ .Values.spec.apps.ecsdemo_frontend.path }}'
     helm:
-      values: "{{ toYaml .Values.spec.apps.ecsdemo_frontend.path | nindent 8 }}   \n"
+      values: "{{ toYaml .Values.spec.apps.ecsdemo_frontend | nindent 8 }}   \n"
   syncPolicy:
     automated:
       prune: true
