@@ -10,7 +10,7 @@ spec:
   - namespace: apps
     server: https://kubernetes.default.svc
   sourceRepos:
-  - '{{ .Values.spec.apps.ecsdemo-frontend.repoURL }}'
+  - '{{ .Values.spec.apps.ecsdemo_frontend.repoURL }}'
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -27,12 +27,11 @@ spec:
     namespace: apps
     server: '{{ .Values.spec.destination.server }}'
   source:
-    repoURL: '{{ .Values.spec.apps.ecsdemo-frontend.repoURL }}'
-    targetRevision: '{{ .Values.spec.apps.ecsdemo-frontend.targetRevision }}'
-    path: '{{ .Values.spec.apps.ecsdemo-frontend.path }}'
+    repoURL: '{{ .Values.spec.apps.ecsdemo_frontend.repoURL }}'
+    targetRevision: '{{ .Values.spec.apps.ecsdemo_frontend.targetRevision }}'
+    path: '{{ .Values.spec.apps.ecsdemo_frontend.path }}'
     helm:
-      values: |
-        {{ toYaml .Values.spec.apps.ecsdemo-frontend.path | nindent 8 }}   #! CHANGED
+      values: "{{ toYaml .Values.spec.apps.ecsdemo_frontend.path | nindent 8 }}   \n"
   syncPolicy:
     automated:
       prune: true
