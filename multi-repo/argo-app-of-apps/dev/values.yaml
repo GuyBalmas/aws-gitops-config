@@ -5,7 +5,7 @@ spec:
     server: https://kubernetes.default.svc
 # All helm parameters can be sent by IaC code (Terraform or CDK)    
   apps:
-    ecsdemo_frontend:                                                       # NOTE: changed for convention to match workload name
+    ecsdemoFrontend:                                                       # NOTE: changed for convention to match workload name
       #repoURL: git@github.com:aws-containers/ecsdemo-frontend.git
       repoURL: https://github.com/aws-containers/ecsdemo-frontend.git       
       targetRevision: main
@@ -22,12 +22,12 @@ spec:
           - paths:
               - path: /
                 pathType: Prefix      
-    ecsdemo_nodejs:
+    ecsdemoNodejs:
       repoURL: https://github.com/aws-containers/ecsdemo-nodejs.git      
       #repoURL: git@github.com:aws-containers/ecsdemo-nodejs.git
       targetRevision: main
       path: kubernetes/helm/ecsdemo-nodejs
-    ecsdemo_crystal:
+    ecsdemoCrystal:
       repoURL: https://github.com/aws-containers/ecsdemo-crystal.git      
       #repoURL: git@github.com:aws-containers/ecsdemo-crystal.git
       targetRevision: main
